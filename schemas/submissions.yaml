@@ -1,0 +1,96 @@
+id: https://github.com/CMSgov/qpp-submissions-schema/schemas/submissions.yaml
+$schema: http://json-schema.org/schema#
+type: object
+properties:
+  programName: { type: string }
+  entityType:
+    enum: [individual, group]
+  taxpayerIdentificationNumber: { type: string }
+  nationalProviderIdentifier: { type: string }
+  performanceYear: { type: integer }
+  measurementSets:
+    type: array
+    items: { $ref: #/definitions/measurementSet }
+required: [programName, entityType, taxpayerIdentificationNumber, performanceYear]
+
+definitions:
+  measurementSet:
+    type: object
+    properties:
+      category:
+        enum: [ia, aci, quality, cost]
+      submissionMethod:
+        enum: [administrativeClaims, claims, certifiedSurveyVendor, cmsWebInterface, electronicHealthRecord, registry]
+      performanceStart: { type: string }
+      performanceEnd: { type: string }
+      measureSet: { type: string }
+      measurements:
+        type: array
+        items: { $ref: #/definitions/measurement }
+    required: [category, submissionMethod]
+
+  measurement:
+    type: object
+    properties:
+      measureId: { type: string }
+    required: [measureId]
+    oneOf:
+      - { $ref: #/definitions/boolean }
+      - { $ref: #/definitions/proportion }
+      - { $ref: #/definitions/singlePerformanceRate }
+      - { $ref: #/definitions/multiPerformanceRate }
+
+  boolean:
+    type: object
+    properties:
+      value: { type: boolean }
+    required: [value]
+
+  proportion:
+    type: object
+    properties:
+      value:
+        type: object
+        properties:
+          numerator: { type: integer }
+          denomiantor: { type: integer }
+        required: [numerator, denominator]
+    required: [value]
+
+  singlePerformanceRate:
+    type: object
+    properties:
+      value:
+        type: object
+        properties:
+          isEndToEndReported: { type: boolean }
+          performanceMet: { type: integer }
+          performanceNotMet: { type: integer }
+          eligiblePopulationExclusion: { type: integer }
+          eligiblePopulationException: { type: integer }
+          eligiblePopulation: { type: integer }
+        required: [isEndToEndReported, performanceMet, eligiblePopulation]
+    required: [value]
+
+  multiPerformanceRate:
+    type: object
+    properties:
+      value:
+        type: object
+        properties:
+          isEndToEndReported: { type: boolean }
+          strata:
+            type: array
+            items: { $ref: #/definitions/stratum }
+        required: [isEndToEndReported, strata]
+    required: [value]
+
+  stratum:
+    type: object
+    properties:
+      performanceMet: { type: integer }
+      performanceNotMet: { type: integer }
+      eligiblePopulationExclusion: { type: integer }
+      eligiblePopulationException: { type: integer }
+      eligiblePopulation: { type: integer }
+    required: [performanceMet, eligiblePopulation]

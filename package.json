@@ -1,0 +1,22 @@
+{
+  "name": "qpp-submissions-schema",
+  "version": "0.0.1",
+  "description": "Quality Payment Program Submissions Schema",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/qpp-submissions-schema"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/_mocha --colors"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ajv": "^4.10.0",
+    "chai": "^3.5.0",
+    "libxmljs": "^0.18.4",
+    "lodash": "^4.16.4",
+    "mocha": "^3.2.0",
+    "yamljs": "~0.2.8"
+  }
+}
