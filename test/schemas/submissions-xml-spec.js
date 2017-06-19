@@ -3,7 +3,6 @@ const assert = require('chai').assert;
 const fs = require('fs');
 const libXml = require('libxmljs');
 const path = require('path');
-const YAML = require('yamljs');
 
 describe('submissions XML schema', function() {
   let submissionXsd;

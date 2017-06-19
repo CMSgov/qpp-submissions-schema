@@ -1,14 +1,15 @@
 const _ = require('lodash');
 const Ajv = require('ajv');
 const assert = require('chai').assert;
+const fs = require('fs');
 const path = require('path');
-const YAML = require('yamljs');
+const yaml = require('js-yaml');
 
 const ajv = Ajv();
 const submissionJson = require('../data/submission');
 
 describe('submissions JSON schema', function() {
-  const submissionYaml = YAML.load(path.join(__dirname, '../../schemas', 'submissions.yaml'));
+  const submissionYaml = yaml.load(fs.readFileSync(path.join(__dirname, '../../schemas', 'submissions.yaml'), 'utf8'));
 
   it('should validate conforming JSON', function() {
     const valid = ajv.validate(submissionYaml, submissionJson);

@@ -10,7 +10,7 @@ properties:
   performanceYear: { type: integer }
   measurementSets:
     type: array
-    items: { $ref: #/definitions/measurementSet }
+    items: { $ref: '#/definitions/measurementSet' }
 required: [programName, entityType, taxpayerIdentificationNumber, performanceYear]
 
 definitions:
@@ -26,7 +26,7 @@ definitions:
       measureSet: { type: string }
       measurements:
         type: array
-        items: { $ref: #/definitions/measurement }
+        items: { $ref: '#/definitions/measurement' }
     required: [category, submissionMethod]
 
   measurement:
@@ -35,10 +35,10 @@ definitions:
       measureId: { type: string }
     required: [measureId]
     oneOf:
-      - { $ref: #/definitions/boolean }
-      - { $ref: #/definitions/proportion }
-      - { $ref: #/definitions/singlePerformanceRate }
-      - { $ref: #/definitions/multiPerformanceRate }
+      - { $ref: '#/definitions/boolean' }
+      - { $ref: '#/definitions/proportion' }
+      - { $ref: '#/definitions/singlePerformanceRate' }
+      - { $ref: '#/definitions/multiPerformanceRate' }
 
   boolean:
     type: object
@@ -81,7 +81,7 @@ definitions:
           isEndToEndReported: { type: boolean }
           strata:
             type: array
-            items: { $ref: #/definitions/stratum }
+            items: { $ref: '#/definitions/stratum' }
         required: [isEndToEndReported, strata]
     required: [value]
 
