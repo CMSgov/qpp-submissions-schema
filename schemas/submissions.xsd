@@ -1,0 +1,51 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="data" type="dataType"/>
+  <xs:complexType name="measurementType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="measureId"/>
+      <xs:element name="value">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:element type="xs:byte" name="numerator" minOccurs="0"/>
+            <xs:element type="xs:byte" name="denominator" minOccurs="0"/>
+            <xs:element type="xs:string" name="isEndToEndReported" minOccurs="0"/>
+            <xs:element type="strataType" name="strata" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="xs:byte" name="performanceMet" minOccurs="0"/>
+            <xs:element type="xs:byte" name="performanceNotMet" minOccurs="0"/>
+            <xs:element type="xs:byte" name="eligiblePopulation" minOccurs="0"/>
+            <xs:element type="xs:byte" name="eligiblePopulationExclusion" minOccurs="0"/>
+            <xs:element type="xs:byte" name="eligiblePopulationException" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="measurementSetType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="category"/>
+      <xs:element type="xs:string" name="submissionMethod"/>
+      <xs:element type="xs:date" name="performanceStart"/>
+      <xs:element type="xs:date" name="performanceEnd"/>
+      <xs:element type="measurementType" name="measurement" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="strataType">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="performanceMet"/>
+      <xs:element type="xs:byte" name="eligiblePopulation"/>
+      <xs:element type="xs:byte" name="eligiblePopulationExclusion" minOccurs="0"/>
+      <xs:element type="xs:byte" name="eligiblePopulationException" minOccurs="0"/>
+      <xs:element type="xs:string" name="stratum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dataType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="programName"/>
+      <xs:element type="xs:string" name="entityType"/>
+      <xs:element type="xs:int" name="taxpayerIdentificationNumber"/>
+      <xs:element type="xs:long" name="nationalProviderIdentifier"/>
+      <xs:element type="xs:short" name="performanceYear"/>
+      <xs:element type="measurementSetType" name="measurementSet" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

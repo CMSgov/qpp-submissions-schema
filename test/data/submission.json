@@ -1,0 +1,79 @@
+{
+  "programName": "mips",
+  "entityType": "individual",
+  "taxpayerIdentificationNumber": "000456789",
+  "nationalProviderIdentifier": "9876543210",
+  "performanceYear": 2017,
+  "measurementSets": [
+    {
+      "category": "ia",
+      "submissionMethod": "cmsWebInterface",
+      "performanceStart": "2017-01-01",
+      "performanceEnd": "2017-06-01",
+      "measurements": [
+        {
+          "measureId": "IA_EPA_4",
+          "value": true
+        }
+      ]
+    },
+    {
+      "category": "aci",
+      "submissionMethod": "cmsWebInterface",
+      "performanceStart": "2017-01-01",
+      "performanceEnd": "2017-06-01",
+      "measurements": [
+        {
+          "measureId": "ACI_HIE_3",
+          "value": {
+            "numerator": 1,
+            "denominator": 2
+          }
+        },
+        {
+          "measureId": "ACI_PHCDRR_5",
+          "value": true
+        }
+      ]
+    },
+    {
+      "category": "quality",
+      "submissionMethod": "cmsWebInterface",
+      "performanceStart": "2017-01-01",
+      "performanceEnd": "2017-06-01",
+      "measurements": [
+        {
+          "measureId": "391",
+          "value": {
+            "isEndToEndReported": false,
+            "strata": [
+              {
+                "performanceMet": 2,
+                "eligiblePopulation": 10,
+                "eligiblePopulationExclusion": 2,
+                "stratum": "30days"
+              },
+              {
+                "performanceMet": 2,
+                "eligiblePopulation": 6,
+                "eligiblePopulationException": 1,
+                "stratum": "overall"
+              }
+            ]
+          }
+        },
+        {
+          "measureId": "093",
+          "value": {
+            "isEndToEndReported": false,
+            "performanceMet": 1,
+            "performanceNotMet": 1,
+            "eligiblePopulation": 5,
+            "eligiblePopulationExclusion": 1,
+            "eligiblePopulationException": 1
+          }
+        }
+      ]
+    }
+  ]
+}
