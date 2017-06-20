@@ -7,7 +7,7 @@ the schema as an NPM module. QPP submissions are described in more detail
 [here](https://cmsgov.github.io/qpp-submissions-docs/schemas).
 
 The QPP Submissions API accepts both JSON and XML. Schemas for both data formats
-are available in this repository under [/schemas](https://github.com/CMSgov/qpp-submissions-schema/schemas).
+are available in this repository under [/schemas](https://github.com/CMSgov/qpp-submissions-schema/tree/master/schemas).
 
 ### Importing the qpp-submissions-schema module
 The module can be used with the following pattern:
